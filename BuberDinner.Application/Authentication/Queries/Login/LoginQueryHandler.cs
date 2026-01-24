@@ -1,11 +1,11 @@
 using BuberDinner.Application.Authentication.Queries.Login;
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Persistence;
-using BuberDinner.Application.Services.Authentication.Common;
 using BuberDinner.Domain.Common.Errors;
 using ErrorOr;
 using MediatR;
 using BuberDinner.Domain.Entities;
+using BuberDinner.Application.Authentication.Common;
 
 public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
