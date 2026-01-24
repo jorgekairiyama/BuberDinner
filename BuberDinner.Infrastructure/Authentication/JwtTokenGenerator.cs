@@ -1,5 +1,6 @@
 using BuberDinner.Application.Common.Interfaces.Authentication;
 using BuberDinner.Application.Common.Interfaces.Services;
+using BuberDinner.Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -40,5 +41,10 @@ public class JwtTokenGenerator : IJwtTokenGenerator
                 claims: claims,
                 expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
                 signingCredentials: signingCredentials));
+    }
+
+    public string GenerateToken(User user)
+    {
+        return GenerateToken(user.Id, user.FirstName, user.LastName);
     }
 }
