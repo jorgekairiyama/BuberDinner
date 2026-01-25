@@ -7,6 +7,8 @@ using MediatR;
 using BuberDinner.Domain.Entities;
 using BuberDinner.Application.Authentication.Common;
 
+namespace BuberDinner.Application.Authentication.Queries.Login;
+
 public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
@@ -22,6 +24,8 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, ErrorOr<Authenticat
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
+        // await Task.CompletedTask;
+
         if (_userRepository.GetUserByEmail(query.Email) is not User user)
         {
             return Errors.Authentication.InvalidCredentials;
